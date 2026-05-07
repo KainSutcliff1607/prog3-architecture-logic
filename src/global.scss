@@ -1,0 +1,167 @@
+/* ============================================================
+   global.scss - Sistema de Diseño Neobrutalista
+   Autor: Juan Henríquez | Programación III - UNETI 2026
+   ============================================================
+   Decisión técnica: Se usan variables SCSS nativas en lugar de
+   dependencias externas como Tailwind. Esto permite un control
+   total sobre el diseño y demuestra dominio de CSS avanzado.
+   ============================================================ */
+
+// ─── VARIABLES NEOBRUTALISTAS ───────────────────────────────
+$neo-black:       #000000;
+$neo-white:       #FFFFFF;
+$neo-yellow:      #FFE566;
+$neo-mint:        #A8E6CF;
+$neo-pink:        #FFB3BA;
+$neo-blue:        #B4D4FF;
+$neo-orange:      #FFCBA4;
+$neo-purple:      #D4A5FF;
+
+$neo-border:      3px solid $neo-black;
+$neo-shadow:      4px 4px 0px $neo-black;
+$neo-shadow-lg:   6px 6px 0px $neo-black;
+$neo-radius:      8px;
+
+// ─── TIPOGRAFÍA ──────────────────────────────────────────────
+$font-primary:    'Space Grotesk', 'Courier New', monospace;
+$font-size-hero:  2.5rem;
+$font-size-h1:    1.8rem;
+$font-size-h2:    1.4rem;
+$font-size-body:  1rem;
+
+// ─── RESET GLOBAL ────────────────────────────────────────────
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// ─── IMPORTAR FUENTE GOOGLE ──────────────────────────────────
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&display=swap');
+
+// ─── FONDO ANIMADO (HERO) ────────────────────────────────────
+// Decisión: Se usaron @keyframes en lugar de un archivo de
+// video pesado para evitar restricciones de GitHub (100MB)
+// y mejorar el rendimiento en conexiones lentas.
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.neo-hero-bg {
+  background: linear-gradient(
+    -45deg,
+    $neo-yellow,
+    $neo-mint,
+    $neo-blue,
+    $neo-pink
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+}
+
+// ─── COMPONENTES NEOBRUTALISTAS BASE ─────────────────────────
+
+// Tarjeta Neobrutalista
+.neo-card {
+  background: $neo-white;
+  border: $neo-border;
+  border-radius: $neo-radius;
+  box-shadow: $neo-shadow;
+  padding: 1.25rem;
+  font-family: $font-primary;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: $neo-shadow-lg;
+  }
+}
+
+// Badge / Chip
+.neo-badge {
+  display: inline-block;
+  background: $neo-yellow;
+  border: 2px solid $neo-black;
+  border-radius: 4px;
+  box-shadow: 2px 2px 0px $neo-black;
+  padding: 0.2rem 0.6rem;
+  font-family: $font-primary;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+// Botón Primario Neobrutalista
+.neo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: $neo-yellow;
+  color: $neo-black;
+  border: $neo-border;
+  border-radius: $neo-radius;
+  box-shadow: $neo-shadow;
+  padding: 0.75rem 1.5rem;
+  font-family: $font-primary;
+  font-size: $font-size-body;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.1s, box-shadow 0.1s;
+
+  &:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: $neo-shadow-lg;
+  }
+
+  &:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+  }
+
+  &--mint   { background: $neo-mint; }
+  &--pink   { background: $neo-pink; }
+  &--blue   { background: $neo-blue; }
+}
+
+// Divisor visual
+.neo-divider {
+  height: 3px;
+  background: $neo-black;
+  border: none;
+  margin: 1.5rem 0;
+}
+
+// Tag de sección
+.neo-section-tag {
+  display: inline-block;
+  background: $neo-black;
+  color: $neo-white;
+  font-family: $font-primary;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+}
+
+// Ion Content override
+ion-content {
+  --background: #F5F5F0;
+  font-family: $font-primary;
+}
+
+ion-toolbar {
+  --background: #{$neo-yellow};
+  --border-style: solid;
+  --border-color: #{$neo-black};
+  --border-width: 0 0 3px 0;
+  --color: #{$neo-black};
+  font-family: $font-primary;
+  font-weight: 700;
+}

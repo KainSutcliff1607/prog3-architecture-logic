@@ -1,0 +1,51 @@
+<!-- Shell de la Aplicación — Juan Henríquez -->
+<ion-app>
+  <ion-split-pane contentId="main-content" when="lg">
+
+    <!-- ─── MENÚ LATERAL (Desktop) ─── -->
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-content class="menu-content">
+
+        <!-- Cabecera del menú -->
+        <div class="menu-header">
+          <div class="menu-avatar">JH</div>
+          <div class="menu-info">
+            <h2 class="menu-name">Juan Henríquez</h2>
+            <span class="neo-badge">UNETI · Prog III</span>
+          </div>
+        </div>
+
+        <hr class="neo-divider" />
+
+        <!-- Navegación -->
+        <ion-list lines="none" class="menu-nav">
+          @for (item of menuItems; track item.url) {
+            <ion-menu-toggle auto-hide="false">
+              <ion-item
+                [routerLink]="item.url"
+                routerLinkActive="active-link"
+                class="menu-item"
+                detail="false">
+                <ion-icon [name]="item.icon" slot="start"></ion-icon>
+                <ion-label>{{ item.title }}</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          }
+        </ion-list>
+
+        <hr class="neo-divider" />
+
+        <!-- Footer del menú -->
+        <div class="menu-footer">
+          <span class="neo-badge">C.I: 27.913.162</span>
+          <p>Evaluación 1 · 2026</p>
+        </div>
+
+      </ion-content>
+    </ion-menu>
+
+    <!-- ─── CONTENIDO PRINCIPAL ─── -->
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+
+  </ion-split-pane>
+</ion-app>

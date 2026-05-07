@@ -1,0 +1,88 @@
+<!-- contact.page.html — Juan Henríquez | Canal de Comunicación -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Contacto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="contact-content">
+  <div class="page-body">
+
+    <!-- ─── BANNER SUPERIOR ─── -->
+    <section class="contact-banner neo-card">
+      <span class="neo-section-tag">Comunicación</span>
+      <!-- Interpolación: {{ tituloSeccion }} -->
+      <h1 class="banner-title">{{ tituloSeccion }}</h1>
+      <p class="banner-sub">{{ subtitulo }}</p>
+    </section>
+
+    <!-- ─── FORMULARIO ─── -->
+    <!-- @if muestra condicionalmente la confirmación o el formulario -->
+    @if (enviado) {
+      <!-- Estado: Enviado con éxito -->
+      <section class="success-card neo-card">
+        <div class="success-icon">✅</div>
+        <h2 class="success-title">¡Mensaje Enviado!</h2>
+        <p class="success-desc">Se abrió WhatsApp con tu mensaje listo para enviar. ¡Gracias por escribir!</p>
+        <button class="neo-btn" (click)="resetear()">
+          Escribir otro mensaje
+        </button>
+      </section>
+    } @else {
+      <!-- Estado: Formulario activo -->
+      <section class="form-card neo-card">
+        <span class="neo-section-tag">Formulario de Contacto</span>
+
+        <!-- CAMPO 1: Nombre — Two-Way Binding [(ngModel)] -->
+        <div class="field-group">
+          <label class="field-label">Tu Nombre</label>
+          <!-- [(ngModel)] crea el enlace bidireccional con 'formNombre' -->
+          <input
+            class="neo-input"
+            type="text"
+            [(ngModel)]="formNombre"
+            placeholder="Ej: Profesor Márquez"
+            id="input-nombre" />
+          <!-- Interpolación en tiempo real: demuestra que el binding funciona -->
+          @if (formNombre) {
+            <small class="field-preview">👤 {{ formNombre }}</small>
+          }
+        </div>
+
+        <!-- CAMPO 2: Mensaje — Two-Way Binding [(ngModel)] -->
+        <div class="field-group">
+          <label class="field-label">Tu Mensaje</label>
+          <textarea
+            class="neo-input neo-textarea"
+            [(ngModel)]="formMensaje"
+            placeholder="Escribe tu consulta aquí..."
+            rows="4"
+            id="input-mensaje"></textarea>
+        </div>
+
+        <!-- BOTÓN — Event Binding (click) y Property Binding [disabled] -->
+        <button
+          class="neo-btn neo-btn--full"
+          (click)="enviarMensaje()"
+          [disabled]="!formNombre.trim() || !formMensaje.trim() || cargando">
+          <!-- @if para manejar el estado de carga -->
+          @if (cargando) {
+            <ion-spinner name="crescent"></ion-spinner>
+            Enviando...
+          } @else {
+            📲 Enviar por WhatsApp
+          }
+        </button>
+
+        <p class="form-note">
+          Al enviar, se abrirá WhatsApp con tu mensaje ya redactado.
+          No se almacena ningún dato en servidores externos.
+        </p>
+      </section>
+    }
+
+  </div>
+</ion-content>

@@ -1,0 +1,178 @@
+// home.page.scss — Estilos Encapsulados del Hero y Layout
+// Autor: Juan Henríquez | SCSS Puro sin frameworks externos
+
+// Variables locales (complementan el global.scss)
+$gap: 1rem;
+$max-w: 900px;
+
+.home-content {
+  --background: #F5F5F0;
+}
+
+// ─── HERO SECTION ────────────────────────────────────────────
+// El fondo animado es un gradiente CSS definido en global.scss
+// con @keyframes gradientShift — CERO archivos de video necesarios.
+.hero-section {
+  min-height: 280px;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+
+  .hero-overlay {
+    background: rgba(0, 0, 0, 0.55);
+    border: 3px solid #000;
+    border-radius: 12px;
+    margin: 1.25rem;
+    padding: 1.5rem 1.75rem;
+    width: calc(100% - 2.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    backdrop-filter: blur(2px);
+
+    .hero-title {
+      font-family: 'Space Grotesk', monospace;
+      font-size: clamp(1.4rem, 4vw, 2.2rem);
+      font-weight: 800;
+      color: #FFE566;
+      line-height: 1.1;
+    }
+
+    .hero-name {
+      font-family: 'Space Grotesk', monospace;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .hero-desc {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 0.9rem;
+      color: #ccc;
+      margin-top: 0.25rem;
+    }
+  }
+}
+
+// ─── CUERPO DE LA PÁGINA ────────────────────────────────────
+.page-body {
+  max-width: $max-w;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  .section-title {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #000;
+  }
+}
+
+// ─── GRID DE HABILIDADES ─────────────────────────────────────
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: $gap;
+
+  .skill-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+
+    .skill-name {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .skill-level {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 0.75rem;
+      color: #333;
+      font-weight: 500;
+    }
+  }
+}
+
+// ─── TARJETA DE PROYECTO ─────────────────────────────────────
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  .project-title {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #000;
+    font-variant-ligatures: none;
+  }
+
+  .project-desc {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 0.9rem;
+    color: #444;
+    line-height: 1.5;
+  }
+}
+
+// ─── CLASES NEO (override del global) ────────────────────────
+.neo-card {
+  background: #fff;
+  border: 3px solid #000;
+  border-radius: 8px;
+  box-shadow: 4px 4px 0px #000;
+  padding: 1.1rem;
+  transition: transform 0.15s, box-shadow 0.15s;
+
+  &:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #000;
+  }
+}
+
+.neo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #A8E6CF;
+  color: #000;
+  border: 3px solid #000;
+  border-radius: 8px;
+  box-shadow: 3px 3px 0px #000;
+  padding: 0.65rem 1.25rem;
+  font-family: 'Space Grotesk', monospace;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+  align-self: flex-start;
+
+  &:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px #000; }
+  &:active { transform: translate(1px, 1px); box-shadow: 2px 2px 0px #000; }
+}
+
+.neo-section-tag {
+  display: inline-block;
+  background: #000;
+  color: #FFE566;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  align-self: flex-start;
+}

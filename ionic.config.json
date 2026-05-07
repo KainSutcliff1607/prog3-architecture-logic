@@ -1,0 +1,7 @@
+{
+  "name": "prog3-architecture-logic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

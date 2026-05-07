@@ -1,0 +1,61 @@
+<!-- home.page.html — Juan Henríquez | Evaluación 1 Programación III -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <!-- Property Binding: el título viene del controlador con interpolación -->
+    <ion-title>Panel de Inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="home-content">
+
+  <!-- ─── HERO ANIMADO (Fondo CSS @keyframes, sin video) ─── -->
+  <section class="hero-section neo-hero-bg">
+    <div class="hero-overlay">
+      <span class="neo-section-tag">UNETI · Programación III · 2026</span>
+      <!-- Interpolación: {{ titulo }} muestra el valor de la variable del controlador -->
+      <h1 class="hero-title">{{ titulo }}</h1>
+      <h2 class="hero-name">{{ subtitulo }}</h2>
+      <p class="hero-desc">{{ descripcion }}</p>
+    </div>
+  </section>
+
+  <div class="page-body">
+
+    <!-- ─── SECCIÓN: STACK DE HABILIDADES ─── -->
+    <section class="section">
+      <span class="neo-section-tag">Stack Tecnológico</span>
+      <h2 class="section-title">Mis Herramientas</h2>
+
+      <!-- @for: directiva estructural moderna que itera el array 'habilidades' -->
+      <div class="skills-grid">
+        @for (skill of habilidades; track skill.nombre) {
+          <div class="skill-card neo-card" [style.background]="skill.color">
+            <!-- Property Binding: [style] enlaza la propiedad CSS al dato del objeto -->
+            <strong class="skill-name">{{ skill.nombre }}</strong>
+            <span class="skill-level">{{ skill.nivel }}</span>
+          </div>
+        }
+      </div>
+    </section>
+
+    <!-- ─── SECCIÓN: PROYECTOS ─── -->
+    <section class="section">
+      <span class="neo-section-tag">Portafolio</span>
+      <h2 class="section-title">Proyecto Destacado</h2>
+
+      @for (proyecto of proyectos; track proyecto.titulo) {
+        <div class="project-card neo-card">
+          <h3 class="project-title">{{ proyecto.titulo }}</h3>
+          <p class="project-desc">{{ proyecto.descripcion }}</p>
+          <a [href]="proyecto.url" target="_blank" class="neo-btn neo-btn--mint">
+            🔗 Ver en GitHub
+          </a>
+        </div>
+      }
+    </section>
+
+  </div>
+</ion-content>

@@ -1,0 +1,61 @@
+<!-- about-me.page.html — Juan Henríquez | Expediente Académico -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Expediente Académico</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="about-content">
+  <div class="page-body">
+
+    <!-- ─── TARJETA DE IDENTIDAD ─── -->
+    <section class="identity-card neo-card">
+      <div class="identity-avatar">JH</div>
+      <div class="identity-info">
+        <!-- Interpolación: {{ estudiante.nombre }} inyecta el dato del controlador -->
+        <h1 class="identity-name">{{ estudiante.nombre }}</h1>
+        <span class="neo-badge neo-badge--pink">C.I: {{ estudiante.ci }}</span>
+
+        <div class="identity-meta">
+          <div class="meta-item">
+            <ion-icon name="school-outline"></ion-icon>
+            <!-- Property Binding: [innerHTML] permite formatear el texto dinámicamente -->
+            <span>{{ estudiante.universidad }} · {{ estudiante.trayecto }}</span>
+          </div>
+          <div class="meta-item">
+            <ion-icon name="person-outline"></ion-icon>
+            <span>Prof. {{ estudiante.profesor }}</span>
+          </div>
+          <div class="meta-item">
+            <ion-icon name="book-outline"></ion-icon>
+            <span>{{ estudiante.materia }} · {{ estudiante.anno }}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── ACORDEONES DINÁMICOS ─── -->
+    <!-- @for genera un ion-accordion por cada objeto del array 'secciones' -->
+    <section>
+      <span class="neo-section-tag">Perfil Académico</span>
+      <ion-accordion-group class="accordion-group">
+        @for (seccion of secciones; track seccion.titulo) {
+          <ion-accordion class="neo-accordion">
+            <ion-item slot="header" class="accordion-header">
+              <ion-icon [name]="seccion.icono" slot="start"></ion-icon>
+              <!-- Property Binding: [name] enlaza el ícono dinámicamente -->
+              <ion-label>{{ seccion.titulo }}</ion-label>
+            </ion-item>
+            <div slot="content" class="accordion-body">
+              <p>{{ seccion.contenido }}</p>
+            </div>
+          </ion-accordion>
+        }
+      </ion-accordion-group>
+    </section>
+
+  </div>
+</ion-content>
