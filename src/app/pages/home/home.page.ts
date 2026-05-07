@@ -25,24 +25,29 @@ export class HomePage implements OnInit {
 
   // Array de habilidades renderizado via @for (Data-Driven UI)
   public habilidades: { nombre: string; nivel: string; color: string }[] = [
-    { nombre: 'Angular 17',    nivel: 'Avanzado',     color: '#FFB3BA' },
-    { nombre: 'Ionic 7',       nivel: 'Avanzado',     color: '#A8E6CF' },
-    { nombre: 'TypeScript',    nivel: 'Intermedio',   color: '#B4D4FF' },
-    { nombre: 'SCSS/Sass',     nivel: 'Avanzado',     color: '#FFE566' },
-    { nombre: 'NgModules',     nivel: 'Avanzado',     color: '#FFCBA4' },
-    { nombre: 'Git & GitHub',  nivel: 'Intermedio',   color: '#D4A5FF' },
+    { nombre: 'Angular 17', nivel: 'Avanzado', color: '#FFB3BA' },
+    { nombre: 'Ionic 7', nivel: 'Avanzado', color: '#A8E6CF' },
+    { nombre: 'TypeScript', nivel: 'Intermedio', color: '#B4D4FF' },
+    { nombre: 'SCSS/Sass', nivel: 'Avanzado', color: '#FFE566' },
+    { nombre: 'NgModules', nivel: 'Avanzado', color: '#FFCBA4' },
+    { nombre: 'Git & GitHub', nivel: 'Intermedio', color: '#D4A5FF' },
   ];
 
   // Proyectos destacados
   public proyectos: { titulo: string; descripcion: string; url: string }[] = [
     {
       titulo: 'prog3-architecture-logic',
-      descripcion: 'Aplicación Ionic con arquitectura NgModules y diseño Neobrutalista. Evaluación 1 de Programación III.',
+      descripcion: 'Aplicación base con arquitectura modular NgModules y diseño Neobrutalista.',
       url: 'https://github.com/KainSutcliff1607/prog3-architecture-logic'
+    },
+    {
+      titulo: 'Tarea-1-Programacion-III',
+      descripcion: 'Repositorio oficial de entrega para la Evaluación 1 de Programación III - UNETI.',
+      url: 'https://github.com/KainSutcliff1607/Tarea-1-Programacion-III'
     }
   ];
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }
