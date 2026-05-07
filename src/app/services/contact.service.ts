@@ -18,7 +18,7 @@ import { Injectable } from '@angular/core';
 export class ContactService {
 
   // Número de contacto del estudiante
-  private readonly NUMERO_WA = '584249999999'; // Reemplazar con número real
+  private readonly NUMERO_WA = '+584223820075'; // Reemplazar con número real
 
   /**
    * @method enviar
