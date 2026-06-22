@@ -1,50 +1,67 @@
 import { Injectable } from '@angular/core';
 
+export interface InteraccionMensaje {
+  id: number;
+  nombre: string;
+  mensaje: string;
+  fecha: Date;
+  categoria: string;
+}
+
 /**
- * @service ContactService (Inyectable Singleton)
- * @author Juan Henríquez - C.I: 27.913.162
- * @description Servicio encargado de la lógica de comunicación.
- *
- * Profesor Carlos Márquez: Este servicio aplica el Principio de
- * Responsabilidad Única (S en SOLID). La vista (contact.page.html)
- * solo se encarga de RECOGER los datos del usuario via [(ngModel)].
- * Este servicio se encarga exclusivamente de PROCESAR y ENVIAR esos datos.
- * Si en el futuro se cambia WhatsApp por un email o una API REST,
- * SOLO se modifica este archivo, sin tocar la vista.
+ * @service ContactService (Inyectable Singleton - SD2 Optimizado)
+ * @author Juan Henríquez
+ * @description Gestión de estado local y comunicación externa.
  */
 @Injectable({
-  providedIn: 'root' // Disponible en toda la app sin necesidad de declararlo en módulos hijos
+  providedIn: 'root'
 })
 export class ContactService {
 
-  // Número de contacto del estudiante
-  private readonly NUMERO_WA = '+584223820075'; // Reemplazar con número real
+  private readonly NUMERO_WA = '+584223820075';
+  private _historial: InteraccionMensaje[] = [];
+
+  constructor() {}
 
   /**
    * @method enviar
-   * @description Construye una URL de WhatsApp con los datos del formulario
-   * y la abre en una nueva pestaña del navegador.
-   * @param nombre - Nombre del remitente recopilado via Two-Way Binding
-   * @param mensaje - Texto del mensaje recopilado via Two-Way Binding
+   * @description Registra la interacción localmente y abre WhatsApp.
    */
-  public enviar(nombre: string, mensaje: string): void {
-    if (!nombre.trim() || !mensaje.trim()) {
-      console.warn('[ContactService] Nombre o mensaje vacíos. Operación cancelada.');
-      return;
-    }
+  public enviar(nombre: string, mensaje: string, categoria: string = 'Consulta General'): void {
+    const nuevoMensaje: InteraccionMensaje = {
+      id: Date.now(),
+      nombre,
+      mensaje,
+      fecha: new Date(),
+      categoria
+    };
 
-    // Construcción dinámica del texto con formato Markdown para WhatsApp
+    // Almacenamiento en memoria (Micro-CRUD: Create)
+    this._historial.push(nuevoMensaje);
+
     const textBase =
-      `Hola! 👋 Te contacto desde *prog3-architecture-logic*.\n\n` +
+      `Hola Juan! 👋\n` +
+      `*Categoría:* ${categoria}\n` +
       `*👤 Remitente:* ${nombre}\n` +
-      `*📝 Mensaje:* ${mensaje}\n\n` +
-      `_Evaluación 1 — Programación III — UNETI 2026_`;
+      `*📝 Mensaje:* ${mensaje}`;
 
-    // encodeURIComponent garantiza que caracteres especiales (ñ, á, saltos de línea)
-    // no rompan la URL generada
     const url = `https://wa.me/${this.NUMERO_WA}?text=${encodeURIComponent(textBase)}`;
-
-    // window.open abre WhatsApp en una nueva pestaña sin bloquear la SPA
     window.open(url, '_blank');
+  }
+
+  /**
+   * @method obtenerHistorial
+   * @description Retorna los mensajes (Micro-CRUD: Read)
+   */
+  public obtenerHistorial(): InteraccionMensaje[] {
+    return this._historial;
+  }
+
+  /**
+   * @method eliminar
+   * @description Borra una interacción (Micro-CRUD: Delete)
+   */
+  public eliminar(id: number): void {
+    this._historial = this._historial.filter(m => m.id !== id);
   }
 }

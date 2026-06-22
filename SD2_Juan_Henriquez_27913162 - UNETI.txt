@@ -1,0 +1,50 @@
+REPÚBLICA BOLIVARIANA DE VENEZUELA
+MINISTERIO DEL PODER POPULAR PARA LA EDUCACIÓN UNIVERSITARIA   
+UNIVERSIDAD NACIONAL EXPERIMENTAL
+DE TELECOMUNICACIONES E INFORMÁTICA (UNETI)
+PROGRAMA NACIONAL DE FORMACIÓN EN INFORMÁTICA
+
+DISEÑO E IMPLEMENTACIÓN DE UNA APLICACIÓN WEB HÍBRIDA INTERACTIVA (SD2)
+Migración Standalone y Micro-CRUD de Gestión de Estado
+
+Autor: Juan Henríquez
+C.I: 27.913.162
+Profesor Académico: Carlos Alberto Márquez Guillén
+Caracas, Junio de 2026
+
+RESUMEN
+El presente reporte documenta la evolución técnica del proyecto "prog3-architecture-logic" durante la Sesión Didáctica 2 (SD2). Se ha realizado una reingeniería completa de la aplicación, transitando de una arquitectura basada en módulos (NgModule) hacia una Arquitectura Standalone. Se implementaron formularios reactivos con validaciones programáticas y un sistema de gestión de estado basado en el patrón Micro-CRUD, garantizando que la aplicación sea interactiva, eficiente y escalable.
+
+ÍNDICE TÉCNICO
+1. MIGRACIÓN ARQUITECTÓNICA (STANDALONE)
+2. FORMULARIOS REACTIVOS Y VALIDACIÓN ATÓMICA
+3. GESTIÓN DE ESTADO (MICRO-CRUD INTERACTIVO)
+4. EXPERIENCIA DE USUARIO Y OPTIMIZACIÓN
+5. CONCLUSIONES
+
+---
+
+1. MIGRACIÓN ARQUITECTÓNICA (STANDALONE)
+Se ha eliminado la estructura Legacy de NgModules. En la SD2, el proyecto se basa en Componentes Independientes (Standalone Components).
+- Beneficio: Menor overhead de carga y mejor rendimiento en dispositivos móviles.
+- Implementación: Uso de bootstrapApplication() y appConfig para la inyección de proveedores.
+
+2. FORMULARIOS REACTIVOS Y VALIDACIÓN ATÓMICA
+El módulo de contacto fue refactorizado utilizando ReactiveFormsModule.
+- Validadores: Se aplicaron reglas estrictas (Required, Email, MinLength) desde la capa lógica.
+- Reactividad: El botón de envío se habilita solo cuando el modelo de datos es íntegro.
+
+3. GESTIÓN DE ESTADO (MICRO-CRUD INTERACTIVO)
+Se implementó un "Laboratorio de Consultoría" con un historial dinámico.
+- Create: Al enviar, se registra la interacción en un array local inyectado vía servicio.
+- Read: Renderizado instantáneo de mensajes previos en la UI.
+- Delete: Funcionalidad para eliminar registros del historial de sesión.
+
+4. EXPERIENCIA DE USUARIO Y OPTIMIZACIÓN
+- Feedback Instantáneo: Uso de ToastController de Ionic para notificar éxitos y eliminaciones.
+- UX Avanzada: Inclusión de badges de estado y categorías de servicio en el formulario.
+
+5. CONCLUSIONES
+La migración a una arquitectura reactiva permite un desacoplamiento total entre la vista y la lógica. El proyecto ahora cumple con los principios SOLID y está listo para ser escalado con persistencia externa.
+
+PALABRAS CLAVE: Standalone, Micro-CRUD, Reactive Forms, Ionic 8, UNETI, Programación III.

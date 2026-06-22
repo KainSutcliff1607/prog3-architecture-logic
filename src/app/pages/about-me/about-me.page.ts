@@ -1,23 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
 
-/**
- * @page AboutMePage (Expediente Académico)
- * @author Juan Henríquez - C.I: 27.913.162
- * @description Vista de Información Personal del estudiante.
- *
- * Profesor Carlos Márquez: Esta vista demuestra:
- * - Property Binding con [value] e [innerHTML] para mostrar datos del objeto.
- * - Control Flow @for para renderizar acordeones dinámicamente.
- * - Separación de datos (controlador) vs presentación (template HTML).
- */
 @Component({
   selector: 'app-about-me',
   templateUrl: './about-me.page.html',
   styleUrls: ['./about-me.page.scss'],
+  standalone: true,
+  imports: [IonicModule, CommonModule]
 })
 export class AboutMePage implements OnInit {
 
-  // Datos del estudiante (almacenados en el controlador, no hardcodeados en HTML)
   public estudiante = {
     nombre:      'Juan Henríquez',
     ci:          '27.913.162',
@@ -28,7 +21,6 @@ export class AboutMePage implements OnInit {
     anno:        '2026'
   };
 
-  // Secciones del acordeón (Data-Driven)
   public secciones: { titulo: string; icono: string; contenido: string }[] = [
     {
       titulo:    'Datos Académicos',
@@ -36,19 +28,19 @@ export class AboutMePage implements OnInit {
       contenido: 'Actualmente cursando el Trayecto III de la carrera Informática en la Universidad Nacional Experimental de Telecomunicaciones e Informática (UNETI), bajo la guía del Profesor Carlos Márquez en la asignatura Programación III.'
     },
     {
-      titulo:    'Enfoque Técnico',
+      titulo:    'Enfoque Técnico (SD2)',
       icono:     'code-slash-outline',
-      contenido: 'Especializado en el desarrollo de aplicaciones híbridas con Ionic y Angular, aplicando arquitecturas escalables basadas en NgModules. Comprometido con las buenas prácticas de codificación y los principios SOLID.'
+      contenido: 'Especializado en el desarrollo de aplicaciones híbridas con Ionic y Angular, migrando de arquitecturas Modulares legacy a componentes Standalone modernos.'
     },
     {
       titulo:    'Filosofía de Código',
       icono:     'bulb-outline',
-      contenido: 'Creo firmemente que el código limpio y bien documentado es tan importante como el código funcional. Cada decisión técnica debe poder explicarse y justificarse, como lo demuestran los comentarios en este proyecto.'
+      contenido: 'Creo firmemente que el código limpio y bien documentado es tan importante como el código funcional. Cada decisión técnica debe poder explicarse y justificarse.'
     },
     {
       titulo:    'Tecnologías Dominadas',
       icono:     'layers-outline',
-      contenido: 'Angular 17 · Ionic 7 · TypeScript · SCSS Puro · NgModules · Git & GitHub · Node.js'
+      contenido: 'Angular 18 · Ionic 8 · TypeScript · Standalone Architecture · Reactive Forms'
     }
   ];
 
