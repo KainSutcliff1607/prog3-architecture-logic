@@ -69,8 +69,8 @@ export class ContactPage implements OnInit {
     // Disparar sonido antes del cambio de foco (WhatsApp)
     this.playSound('send');
 
-    const { nombre, mensaje, categoria } = this.contactForm.value;
-    this.contactService.enviar(nombre, mensaje, categoria);
+    const { email, mensaje, categoria } = this.contactForm.value;
+    this.contactService.enviar(email, mensaje, categoria);
 
     await this.mostrarToast('¡Interacción registrada con éxito!', 'success');
     

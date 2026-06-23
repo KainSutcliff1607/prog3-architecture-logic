@@ -21,7 +21,7 @@ export class ContactService {
   private readonly NUMERO_WA = '+584223820075';
   private _historial: InteraccionMensaje[] = [];
 
-  constructor() {}
+  constructor() { }
 
   /**
    * @method enviar
@@ -39,11 +39,16 @@ export class ContactService {
     // Almacenamiento en memoria (Micro-CRUD: Create)
     this._historial.push(nuevoMensaje);
 
+    // Mensaje Personalizado Premium
     const textBase =
-      `Hola Juan! 👋\n` +
-      `*Categoría:* ${categoria}\n` +
-      `*👤 Email:* ${email}\n` +
-      `*📝 Mensaje:* ${mensaje}`;
+      `*🚀 NUEVA CONSULTA - PORTAFOLIO PRO* \n` +
+      `------------------------------------------\n` +
+      `*📂 Categoría:* ${categoria}\n` +
+      `*👤 Usuario:* ${email}\n` +
+      `*📝 Mensaje:* ${mensaje}\n` +
+      `------------------------------------------\n` +
+      `_Enviado desde el Lab de Juan Henríquez_ \n` +
+      `_Evaluación SD2 | UNETI 2026_`;
 
     const url = `https://wa.me/${this.NUMERO_WA}?text=${encodeURIComponent(textBase)}`;
     window.open(url, '_blank');
