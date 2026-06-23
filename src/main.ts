@@ -1,13 +1,11 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { AppModule } from './app/app.module';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { appConfig } from './app/app.config';
+import { AppComponent } from './app/app.component';
 
 /**
- * @bootstrap - Punto de entrada de la aplicación Angular.
- * @description Utiliza platformBrowserDynamic (compilación JIT en memoria)
- * para arrancar el NgModule raíz. Decisión técnica: en un entorno Standalone,
- * esto se haría con bootstrapApplication(), pero aquí usamos la estrategia
- * basada en módulos que permite una declaración centralizada de dependencias.
+ * @bootstrap - Punto de entrada Standalone (SD2)
+ * @author Juan Henríquez
+ * @description Migración de arquitectura modular a componentes independientes.
  */
-platformBrowserDynamic()
-  .bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+bootstrapApplication(AppComponent, appConfig)
+  .catch((err) => console.error(err));

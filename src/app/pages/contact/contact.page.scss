@@ -1,188 +1,105 @@
-// contact.page.scss — Canal de Comunicación
-// Autor: Juan Henríquez | SCSS Puro Encapsulado
+@import '../../../global.scss';
 
-.contact-content { --background: #F5F5F0; }
-
-.page-body {
-  max-width: 640px;
+.neo-container {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 1.5rem 1.25rem 4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
 }
 
-// ─── BANNER ──────────────────────────────────────────────────
-.contact-banner {
-  background: #B4D4FF;
+.neo-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
 
-  .banner-title {
-    font-family: 'Space Grotesk', monospace;
-    font-size: clamp(1.4rem, 4vw, 2rem);
+  @media (min-width: 1024px) {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+}
+
+.neo-field {
+  margin-bottom: 1.5rem;
+  
+  label {
+    display: block;
+    font-size: 0.75rem;
     font-weight: 800;
-    color: #000;
-    margin: 0.4rem 0 0.2rem;
-  }
-
-  .banner-sub {
-    font-family: 'Space Grotesk', monospace;
-    font-size: 0.9rem;
-    color: #333;
+    margin-bottom: 0.5rem;
+    color: #444;
   }
 }
 
-// ─── FORMULARIO ──────────────────────────────────────────────
-.form-card {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  background: #fff;
-}
-
-.field-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-
-  .field-label {
-    font-family: 'Space Grotesk', monospace;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #000;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .field-preview {
-    font-family: 'Space Grotesk', monospace;
-    font-size: 0.8rem;
-    color: #555;
-    font-style: italic;
-    padding-left: 0.25rem;
-  }
-}
-
-// Input/Textarea Neobrutalista
 .neo-input {
   width: 100%;
-  background: #FFFFF0;
-  border: 3px solid #000;
-  border-radius: 8px;
   padding: 0.75rem 1rem;
-  font-family: 'Space Grotesk', monospace;
-  font-size: 1rem;
-  color: #000;
+  font-family: $font-primary;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 2px solid $neo-black;
+  border-radius: 4px;
+  background: white;
   outline: none;
-  transition: box-shadow 0.15s;
+  transition: box-shadow 0.1s;
 
   &:focus {
-    box-shadow: 4px 4px 0px #000;
+    box-shadow: 3px 3px 0px $neo-black;
   }
 
-  &::placeholder {
-    color: #999;
-    font-weight: 400;
+  &.error {
+    background: #fff5f5;
+    border-color: #ff4d4d;
   }
 }
 
-.neo-textarea {
-  resize: vertical;
-  min-height: 110px;
-  line-height: 1.5;
+.neo-card--small {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 3px 3px 0px $neo-black;
 }
 
-.form-note {
-  font-family: 'Space Grotesk', monospace;
-  font-size: 0.75rem;
-  color: #888;
-  line-height: 1.5;
-  text-align: center;
-}
-
-// ─── BOTÓN ───────────────────────────────────────────────────
-.neo-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  background: #FFE566;
-  color: #000;
-  border: 3px solid #000;
-  border-radius: 8px;
-  box-shadow: 4px 4px 0px #000;
-  padding: 0.85rem 1.5rem;
-  font-family: 'Space Grotesk', monospace;
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform 0.1s, box-shadow 0.1s;
-
-  &:hover:not([disabled]) {
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0px #000;
-  }
-
-  &:active:not([disabled]) {
-    transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0px #000;
-  }
-
-  &[disabled] {
-    opacity: 0.45;
-    cursor: not-allowed;
-    box-shadow: 2px 2px 0px #666;
-  }
-
-  &--full { width: 100%; }
-}
-
-// ─── ESTADO DE ÉXITO ─────────────────────────────────────────
-.success-card {
-  background: #A8E6CF;
+.flex-between {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  text-align: center;
-  gap: 0.75rem;
-  padding: 2rem 1.5rem;
-
-  .success-icon { font-size: 3rem; }
-
-  .success-title {
-    font-family: 'Space Grotesk', monospace;
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: #000;
-  }
-
-  .success-desc {
-    font-family: 'Space Grotesk', monospace;
-    font-size: 0.9rem;
-    color: #333;
-    max-width: 320px;
-    line-height: 1.5;
-  }
 }
 
-// Clases neo locales
-.neo-card {
-  border: 3px solid #000;
-  border-radius: 8px;
-  box-shadow: 4px 4px 0px #000;
-  padding: 1.25rem;
-}
-
-.neo-section-tag {
-  display: inline-block;
-  background: #000;
-  color: #FFE566;
-  font-family: 'Space Grotesk', monospace;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+.neo-badge-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: white;
+  border: 2px solid $neo-black;
+  box-shadow: 3px 3px 0px $neo-black;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.65rem;
+  font-weight: 800;
   text-transform: uppercase;
-  padding: 0.2rem 0.6rem;
   border-radius: 4px;
-  align-self: flex-start;
-  margin-bottom: 0.5rem;
 }
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 0 rgba(34, 197, 94, 0.4);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: $neo-black;
+  border-radius: 10px;
+}
+
+.p-6 { padding: 1.5rem; }
+.w-full { width: 100%; }
+.gap-2 { gap: 0.5rem; }
+.mb-4 { margin-bottom: 1rem; }
+.space-y-4 > * + * { margin-top: 1rem; }
