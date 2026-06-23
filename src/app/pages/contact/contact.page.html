@@ -14,10 +14,10 @@
 
         <form [formGroup]="contactForm" (ngSubmit)="enviar()" class="neo-form">
           <div class="neo-field">
-            <label>NOMBRE DEL SOLICITANTE</label>
-            <input formControlName="nombre" type="text" placeholder="Ej. Cliente Potencial"
+            <label>CORREO ELECTRÓNICO</label>
+            <input formControlName="email" type="email" placeholder="Ej. usuario@uneti.edu.ve"
               class="neo-input"
-              [class.error]="contactForm.get('nombre')?.invalid && contactForm.get('nombre')?.touched">
+              [class.error]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
           </div>
 
           <div class="neo-field">
@@ -57,7 +57,7 @@
               <div class="flex-between mb-2">
                 <div>
                   <div class="text-xs font-black text-blue-600">{{ item.categoria }}</div>
-                  <div class="text-sm font-bold">{{ item.nombre }}</div>
+                  <div class="text-sm font-bold">{{ item.email }}</div>
                 </div>
                 <button (click)="borrar(item.id)" class="text-gray-400 hover:text-red-500 transition-colors">
                   <span class="material-symbols-outlined">delete_sweep</span>

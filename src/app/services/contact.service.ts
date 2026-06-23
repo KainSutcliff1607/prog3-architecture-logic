@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 export interface InteraccionMensaje {
   id: number;
-  nombre: string;
+  email: string;
   mensaje: string;
   fecha: Date;
   categoria: string;
@@ -27,10 +27,10 @@ export class ContactService {
    * @method enviar
    * @description Registra la interacción localmente y abre WhatsApp.
    */
-  public enviar(nombre: string, mensaje: string, categoria: string = 'Consulta General'): void {
+  public enviar(email: string, mensaje: string, categoria: string = 'Soporte Académico'): void {
     const nuevoMensaje: InteraccionMensaje = {
       id: Date.now(),
-      nombre,
+      email,
       mensaje,
       fecha: new Date(),
       categoria
@@ -42,7 +42,7 @@ export class ContactService {
     const textBase =
       `Hola Juan! 👋\n` +
       `*Categoría:* ${categoria}\n` +
-      `*👤 Remitente:* ${nombre}\n` +
+      `*👤 Email:* ${email}\n` +
       `*📝 Mensaje:* ${mensaje}`;
 
     const url = `https://wa.me/${this.NUMERO_WA}?text=${encodeURIComponent(textBase)}`;
