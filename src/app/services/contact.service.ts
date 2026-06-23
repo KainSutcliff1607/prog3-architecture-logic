@@ -21,7 +21,7 @@ export class ContactService {
   private readonly NUMERO_WA = '+584223820075';
   private _historial: InteraccionMensaje[] = [];
 
-  constructor() {}
+  constructor() { }
 
   /**
    * @method enviar
